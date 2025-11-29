@@ -186,10 +186,46 @@ The `TicketService` simulates backend API calls with:
 ### Build for Production
 
 ```bash
-npm run build
+npm run build:prod
 ```
 
-The build artifacts will be stored in the `dist/` directory.
+The build artifacts will be stored in the `dist/angular-signals-ticket-dashboard/browser/` directory.
+
+## 🚀 Deployment
+
+### Quick Deploy to GitHub
+
+1. **Create Repository on GitHub**:
+   - Go to [GitHub](https://github.com/new)
+   - Repository name: `angular-signals-ticket-dashboard`
+   - Description: `Modern Ticket Management Dashboard built with Angular 19, Signals, and PrimeNG`
+   - **DO NOT** initialize with README, .gitignore, or license
+   - Click "Create repository"
+
+2. **Push to GitHub**:
+   ```bash
+   # Option 1: Use the provided script
+   ./PUSH_TO_GITHUB.sh YOUR_GITHUB_USERNAME
+   
+   # Option 2: Manual push
+   git remote add origin https://github.com/YOUR_USERNAME/angular-signals-ticket-dashboard.git
+   git branch -M main
+   git push -u origin main
+   ```
+
+3. **Deploy to Vercel** (Recommended):
+   - Go to [vercel.com](https://vercel.com)
+   - Import your GitHub repository
+   - Vercel will auto-detect settings from `vercel.json`
+   - Click "Deploy"
+
+4. **Deploy to Netlify**:
+   - Go to [netlify.com](https://netlify.com)
+   - Import your GitHub repository
+   - Netlify will auto-detect settings from `netlify.toml`
+   - Click "Deploy site"
+
+For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md) and [SETUP_REPO.md](./SETUP_REPO.md).
 
 ## 📁 Project Structure Details
 
