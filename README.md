@@ -203,10 +203,11 @@ The build artifacts will be stored in the `dist/angular-signals-ticket-dashboard
    - Click "Create repository"
 
 2. **Push to GitHub**:
+
    ```bash
    # Option 1: Use the provided script
    ./PUSH_TO_GITHUB.sh YOUR_GITHUB_USERNAME
-   
+
    # Option 2: Manual push
    git remote add origin https://github.com/YOUR_USERNAME/angular-signals-ticket-dashboard.git
    git branch -M main
