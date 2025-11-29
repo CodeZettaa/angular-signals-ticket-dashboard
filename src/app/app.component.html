@@ -1,0 +1,20 @@
+<div class="app-container">
+  <nav class="navbar">
+    <div class="nav-content">
+      <h2 class="nav-title">Ticket Dashboard</h2>
+      <div class="nav-links">
+        <a routerLink="/dashboard" routerLinkActive="active">
+          <i class="pi pi-chart-bar"></i>
+          <span>Dashboard</span>
+        </a>
+        <a routerLink="/tickets" routerLinkActive="active">
+          <i class="pi pi-ticket"></i>
+          <span>Tickets</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+  <main class="main-content">
+    <router-outlet />
+  </main>
+</div>

@@ -1,0 +1,27 @@
+<div class="container mx-auto p-4">
+  @if (loading() && !ticketId) {
+    <app-loading-spinner />
+  } @else if (ticketId && ticket()) {
+    <app-ticket-details
+      [ticket]="ticket()!"
+      [loading]="loading()"
+      (edit)="onEdit($event)"
+      (delete)="onDelete($event)"
+      (back)="onBack()"
+    />
+  } @else {
+    <div class="text-center p-4">
+      <p>Ticket not found.</p>
+      <button
+        type="button"
+        class="p-button p-component mt-3"
+        (click)="onBack()"
+      >
+        Back to Tickets
+      </button>
+    </div>
+  }
+
+  <p-confirmDialog />
+</div>
+

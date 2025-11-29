@@ -1,0 +1,71 @@
+/* Tickets page styles */
+:host {
+  display: block;
+  width: 100%;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--p-surface-border, #334155);
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.page-title::before {
+  content: '🎫';
+  font-size: 1.5rem;
+  -webkit-text-fill-color: initial;
+}
+
+.create-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 4px 14px 0 rgba(102, 126, 234, 0.39);
+  padding: 0.875rem 2rem !important;
+  font-weight: 600 !important;
+  font-size: 0.9375rem !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  min-width: 160px;
+}
+
+.create-button:hover {
+  background: linear-gradient(135deg, #5568d3 0%, #6a3d8f 100%) !important;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+  transform: translateY(-2px);
+}
+
+.create-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 14px 0 rgba(102, 126, 234, 0.39);
+}
+
+.create-button .p-button-icon {
+  margin-right: 0.5rem;
+}
+
+/* Ensure proper spacing between components */
+:host ::ng-deep app-ticket-filters {
+  margin-bottom: 2rem;
+  display: block;
+}
+
+:host ::ng-deep app-ticket-list {
+  display: block;
+}

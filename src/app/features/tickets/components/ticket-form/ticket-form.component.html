@@ -1,0 +1,175 @@
+<p-card>
+  <ng-template pTemplate="header">
+    <h2 class="p-card-title">{{ ticket ? 'Edit Ticket' : 'Create New Ticket' }}</h2>
+  </ng-template>
+  <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()" class="form-grid">
+    <!-- Basic Information Section -->
+    <div class="form-section">
+      <div class="form-section-title">Basic Information</div>
+
+      <div class="form-group">
+        <label for="title" class="form-label">
+          <i class="pi pi-pencil form-label-icon"></i>
+          Title
+          <span class="required-asterisk">*</span>
+        </label>
+        <input
+          id="title"
+          type="text"
+          pInputText
+          formControlName="title"
+          class="form-input"
+          placeholder="Enter ticket title"
+          [class.ng-invalid]="title?.invalid && title?.touched"
+        />
+        @if (title?.invalid && title?.touched) {
+          <div class="error-message">
+            @if (title?.errors?.['required']) {
+              Title is required
+            }
+            @if (title?.errors?.['minlength']) {
+              Title must be at least 3 characters
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="description" class="form-label">
+          <i class="pi pi-file-edit form-label-icon"></i>
+          Description
+          <span class="required-asterisk">*</span>
+        </label>
+        <textarea
+          id="description"
+          pTextarea
+          formControlName="description"
+          rows="5"
+          class="form-textarea"
+          placeholder="Describe the ticket in detail..."
+          [class.ng-invalid]="description?.invalid && description?.touched"
+        ></textarea>
+        @if (description?.invalid && description?.touched) {
+          <div class="error-message">
+            @if (description?.errors?.['required']) {
+              Description is required
+            }
+            @if (description?.errors?.['minlength']) {
+              Description must be at least 10 characters
+            }
+          </div>
+        }
+        <div class="help-text">Provide a detailed description of the issue or request</div>
+      </div>
+    </div>
+
+    <!-- Classification Section -->
+    <div class="form-section">
+      <div class="form-section-title">Classification</div>
+
+      <div class="grid">
+        <div class="col-12 md:col-6">
+          <div class="form-group">
+            <label for="status" class="form-label">
+              <i class="pi pi-info-circle form-label-icon"></i>
+              Status
+              <span class="required-asterisk">*</span>
+            </label>
+            <p-select
+              id="status"
+              [options]="statusOptions"
+              formControlName="status"
+              optionLabel="label"
+              optionValue="value"
+              class="form-select w-full"
+              placeholder="Select status"
+            />
+          </div>
+        </div>
+
+        <div class="col-12 md:col-6">
+          <div class="form-group">
+            <label for="priority" class="form-label">
+              <i class="pi pi-exclamation-triangle form-label-icon"></i>
+              Priority
+              <span class="required-asterisk">*</span>
+            </label>
+            <p-select
+              id="priority"
+              [options]="priorityOptions"
+              formControlName="priority"
+              optionLabel="label"
+              optionValue="value"
+              class="form-select w-full"
+              placeholder="Select priority"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Information Section -->
+    <div class="form-section">
+      <div class="form-section-title">Additional Information</div>
+
+      <div class="grid">
+        <div class="col-12 md:col-6">
+          <div class="form-group">
+            <label for="assignee" class="form-label">
+              <i class="pi pi-user form-label-icon"></i>
+              Assignee
+            </label>
+            <input
+              id="assignee"
+              type="text"
+              pInputText
+              formControlName="assignee"
+              placeholder="Enter assignee name"
+              class="form-input"
+            />
+            <div class="help-text">Optional: Assign this ticket to a team member</div>
+          </div>
+        </div>
+
+        <div class="col-12 md:col-6">
+          <div class="form-group">
+            <label for="tags" class="form-label">
+              <i class="pi pi-tags form-label-icon"></i>
+              Tags
+            </label>
+            <input
+              id="tags"
+              type="text"
+              pInputText
+              [value]="ticketForm.get('tags')?.value?.join(', ') || ''"
+              (input)="onTagsInput($event)"
+              placeholder="bug, feature, urgent"
+              class="form-input"
+            />
+            <div class="help-text">Separate tags with commas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Form Actions -->
+    <div class="form-actions">
+      <p-button
+        label="Cancel"
+        icon="pi pi-times"
+        severity="secondary"
+        [outlined]="true"
+        (onClick)="onCancel()"
+        [disabled]="loading"
+      />
+      <p-button
+        [label]="ticket ? 'Update Ticket' : 'Create Ticket'"
+        icon="pi pi-check"
+        type="submit"
+        [loading]="loading"
+        [disabled]="ticketForm.invalid"
+        [class]="'p-button-primary'"
+      />
+    </div>
+  </form>
+</p-card>

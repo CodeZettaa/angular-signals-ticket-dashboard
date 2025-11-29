@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="page-header">
+    <h1 class="page-title">{{ ticketId ? 'Edit Ticket' : 'Create New Ticket' }}</h1>
+  </div>
+  <app-ticket-form
+    [ticket]="ticket()"
+    [loading]="loading()"
+    (submit)="onSubmit($event)"
+    (cancel)="onCancel()"
+  />
+</div>

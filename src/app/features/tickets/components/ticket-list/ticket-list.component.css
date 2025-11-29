@@ -1,0 +1,109 @@
+/* Ticket list styles */
+:host {
+  display: block;
+}
+
+.ticket-title {
+  font-weight: 600;
+  color: var(--p-text-color, #e2e8f0);
+  margin-bottom: 0.5rem;
+  font-size: 0.9375rem;
+}
+
+.ticket-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.action-buttons .p-button {
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+}
+
+.ticket-row:hover {
+  background: var(--p-surface-50, #1e293b) !important;
+}
+
+.assignee-text {
+  color: var(--p-text-color, #e2e8f0);
+  font-weight: 500;
+}
+
+.date-text {
+  color: var(--p-text-color-secondary, #94a3b8);
+  font-size: 0.875rem;
+}
+
+.empty-message {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--p-text-color-secondary, #94a3b8);
+}
+
+.empty-message-icon {
+  font-size: 4rem;
+  opacity: 0.5;
+  margin-bottom: 1rem;
+}
+
+/* Table improvements */
+:host ::ng-deep .p-datatable {
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--p-surface-50, #1e293b);
+  border: 1px solid var(--p-surface-border, #475569);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+:host ::ng-deep .p-datatable .p-datatable-thead > tr > th {
+  background: var(--p-surface-100, #334155) !important;
+  color: var(--p-text-color, #e2e8f0) !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  padding: 1.25rem 1rem !important;
+  border-bottom: 2px solid var(--p-surface-border, #475569) !important;
+  white-space: nowrap;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-thead > tr > th.table-header {
+  background: var(--p-surface-100, #334155) !important;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+  padding: 1rem !important;
+  border-bottom: 1px solid var(--p-surface-border, #475569) !important;
+  background: var(--p-surface-0, #0f172a) !important;
+  color: var(--p-text-color, #e2e8f0) !important;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr:hover > td {
+  background: var(--p-surface-50, #1e293b) !important;
+}
+
+:host ::ng-deep .p-datatable .p-paginator {
+  background: var(--p-surface-100, #334155) !important;
+  border-top: 1px solid var(--p-surface-border, #475569) !important;
+  padding: 1rem !important;
+}
+
+:host ::ng-deep .p-datatable .p-paginator .p-paginator-pages .p-paginator-page {
+  color: var(--p-text-color, #e2e8f0) !important;
+  background: var(--p-surface-0, #0f172a) !important;
+  border: 1px solid var(--p-surface-border, #475569) !important;
+}
+
+:host ::ng-deep .p-datatable .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: var(--p-primary-color, #667eea) !important;
+  color: white !important;
+}

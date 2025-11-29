@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="page-header">
+    <h1 class="page-title">Tickets</h1>
+    <p-button
+      label="Create Ticket"
+      icon="pi pi-plus"
+      (onClick)="onCreateTicket()"
+      class="create-button"
+      [class]="'p-button-primary'"
+    />
+  </div>
+
+  <app-ticket-filters
+    [filter]="filter()"
+    (filterChange)="onFilterChange($event)"
+    (clearFilters)="onClearFilters()"
+  />
+
+  @if (loading()) {
+  <app-loading-spinner />
+  } @else {
+  <app-ticket-list
+    [tickets]="tickets()"
+    [loading]="loading()"
+    [selectedTicketId]="store.selectedTicketId()"
+    (viewTicket)="onViewTicket($event)"
+    (editTicket)="onEditTicket($event)"
+    (deleteTicket)="onDeleteTicket($event)"
+  />
+  }
+
+  <p-confirmDialog />
+</div>

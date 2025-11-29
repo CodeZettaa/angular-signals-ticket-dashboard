@@ -1,0 +1,66 @@
+<div class="filters-card">
+  <div class="filters-grid">
+    <div class="filter-item">
+      <label for="status-filter" class="filter-label">
+        <i class="pi pi-filter"></i>
+        Status
+      </label>
+      <p-select
+        id="status-filter"
+        [options]="statusOptions"
+        [(ngModel)]="filter.status"
+        (ngModelChange)="onStatusChange($event)"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="Select Status"
+        [showClear]="true"
+        class="w-full filter-select"
+      />
+    </div>
+    <div class="filter-item">
+      <label for="priority-filter" class="filter-label">
+        <i class="pi pi-flag"></i>
+        Priority
+      </label>
+      <p-select
+        id="priority-filter"
+        [options]="priorityOptions"
+        [(ngModel)]="filter.priority"
+        (ngModelChange)="onPriorityChange($event)"
+        optionLabel="label"
+        optionValue="value"
+        placeholder="Select Priority"
+        [showClear]="true"
+        class="w-full filter-select"
+      />
+    </div>
+    <div class="filter-item">
+      <label for="search-filter" class="filter-label">
+        <i class="pi pi-search"></i>
+        Search
+      </label>
+      <span class="p-input-icon-left w-full">
+        <i class="pi pi-search search-icon"></i>
+        <input
+          id="search-filter"
+          type="text"
+          pInputText
+          [(ngModel)]="filter.search"
+          (ngModelChange)="onSearchChange($event)"
+          placeholder="Search tickets..."
+          class="w-full filter-input"
+        />
+      </span>
+    </div>
+  </div>
+  <div class="filters-actions">
+    <p-button
+      label="Clear Filters"
+      icon="pi pi-filter-slash"
+      severity="secondary"
+      (onClick)="onClearFilters()"
+      [outlined]="true"
+      [text]="false"
+    />
+  </div>
+</div>

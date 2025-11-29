@@ -1,0 +1,89 @@
+<div class="back-button">
+  <p-button
+    label="Back to List"
+    icon="pi pi-arrow-left"
+    severity="secondary"
+    [outlined]="true"
+    (onClick)="onBack()"
+  />
+</div>
+
+<p-card [header]="ticket.title">
+  <div class="grid">
+    <div class="col-12">
+      <div class="badge-container">
+        <app-status-badge [status]="ticket.status" />
+        <app-priority-badge [priority]="ticket.priority" />
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="section-title">Description</div>
+      <div class="section-content">{{ ticket.description }}</div>
+    </div>
+
+    <p-divider />
+
+    <div class="col-12 md:col-6 info-grid">
+      <div class="info-item">
+        <div class="section-title">Assignee</div>
+        <div class="section-content">
+          <i class="pi pi-user mr-2"></i>
+          {{ ticket.assignee || 'Unassigned' }}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 md:col-6 info-grid">
+      <div class="info-item">
+        <div class="section-title">Created At</div>
+        <div class="section-content">
+          <i class="pi pi-calendar mr-2"></i>
+          {{ formatDate(ticket.createdAt) }}
+        </div>
+      </div>
+    </div>
+
+    @if (ticket.updatedAt) {
+      <div class="col-12 md:col-6 info-grid">
+        <div class="info-item">
+          <div class="section-title">Updated At</div>
+          <div class="section-content">
+            <i class="pi pi-clock mr-2"></i>
+            {{ formatDate(ticket.updatedAt) }}
+          </div>
+        </div>
+      </div>
+    }
+
+    @if (ticket.tags && ticket.tags.length > 0) {
+      <div class="col-12">
+        <div class="section-title">Tags</div>
+        <div class="tags-container">
+          @for (tag of ticket.tags; track tag) {
+            <p-tag [value]="tag" severity="info" />
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+  <p-divider />
+
+  <div class="action-buttons">
+    <p-button
+      label="Edit"
+      icon="pi pi-pencil"
+      severity="warn"
+      (onClick)="onEdit()"
+      [loading]="loading"
+    />
+    <p-button
+      label="Delete"
+      icon="pi pi-trash"
+      severity="danger"
+      (onClick)="onDelete()"
+      [loading]="loading"
+    />
+  </div>
+</p-card>

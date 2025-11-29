@@ -1,0 +1,92 @@
+<p-table
+  [value]="tickets"
+  [loading]="loading"
+  [paginator]="true"
+  [rows]="10"
+  [rowsPerPageOptions]="[5, 10, 20, 50]"
+  [sortMode]="'multiple'"
+  styleClass="p-datatable-striped"
+  [tableStyle]="{ 'min-width': '50rem', width: '100%' }"
+  [scrollable]="false"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      @for (col of cols; track col.field) {
+        <th
+          [pSortableColumn]="col.field === 'createdAt' ? 'createdAt' : undefined"
+          class="table-header"
+        >
+          {{ col.header }}
+          @if (col.field === 'createdAt') {
+            <p-sortIcon [field]="'createdAt'" />
+          }
+        </th>
+      }
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-ticket>
+    <tr class="ticket-row">
+      <td>
+        <div class="ticket-title">{{ ticket.title }}</div>
+        @if (ticket.tags && ticket.tags.length > 0) {
+          <div class="ticket-tags">
+            @for (tag of ticket.tags; track tag) {
+              <p-tag [value]="tag" severity="info" />
+            }
+          </div>
+        }
+      </td>
+      <td>
+        <app-status-badge [status]="ticket.status" />
+      </td>
+      <td>
+        <app-priority-badge [priority]="ticket.priority" />
+      </td>
+      <td>
+        <span class="assignee-text">{{ ticket.assignee || 'Unassigned' }}</span>
+      </td>
+      <td>
+        <span class="date-text">{{ formatDate(ticket.createdAt) }}</span>
+      </td>
+      <td>
+        <div class="action-buttons">
+          <p-button
+            icon="pi pi-eye"
+            [rounded]="true"
+            [text]="true"
+            severity="info"
+            (onClick)="onView(ticket.id)"
+            [pTooltip]="'View Details'"
+            tooltipPosition="top"
+          />
+          <p-button
+            icon="pi pi-pencil"
+            [rounded]="true"
+            [text]="true"
+            severity="warn"
+            (onClick)="onEdit(ticket.id)"
+            [pTooltip]="'Edit'"
+            tooltipPosition="top"
+          />
+          <p-button
+            icon="pi pi-trash"
+            [rounded]="true"
+            [text]="true"
+            severity="danger"
+            (onClick)="onDelete(ticket.id)"
+            [pTooltip]="'Delete'"
+            tooltipPosition="top"
+          />
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td [attr.colspan]="cols.length" class="empty-message">
+        <div class="empty-message-icon">📭</div>
+        <p>No tickets found.</p>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

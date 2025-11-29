@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="page-header">
+    <h1 class="page-title">Dashboard</h1>
+  </div>
+
+  @if (loading()) {
+  <app-loading-spinner />
+  } @else {
+  <!-- KPI Cards -->
+  <div class="grid mb-4">
+    <div class="col-12 md:col-4">
+      <div class="kpi-card blue">
+        <div class="kpi-icon">📋</div>
+        <div class="kpi-value">{{ totalTickets() }}</div>
+        <div class="kpi-label">Total Tickets</div>
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="kpi-card orange">
+        <div class="kpi-icon">🔓</div>
+        <div class="kpi-value">{{ openTickets() }}</div>
+        <div class="kpi-label">Open Tickets</div>
+      </div>
+    </div>
+    <div class="col-12 md:col-4">
+      <div class="kpi-card red">
+        <div class="kpi-icon">⚠️</div>
+        <div class="kpi-value">{{ criticalTickets() }}</div>
+        <div class="kpi-label">Critical Tickets</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="grid">
+    <div class="col-12 md:col-6">
+      <p-card header="Tickets by Status" class="chart-card">
+        <p-chart
+          type="doughnut"
+          [data]="statusChartData()"
+          [options]="chartOptions"
+          [style]="{ height: '300px' }"
+        />
+      </p-card>
+    </div>
+    <div class="col-12 md:col-6">
+      <p-card header="Tickets by Priority" class="chart-card">
+        <p-chart
+          type="bar"
+          [data]="priorityChartData()"
+          [options]="chartOptions"
+          [style]="{ height: '300px' }"
+        />
+      </p-card>
+    </div>
+  </div>
+  }
+</div>

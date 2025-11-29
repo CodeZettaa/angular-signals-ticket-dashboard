@@ -1,0 +1,68 @@
+/* Ticket details styles */
+:host {
+  display: block;
+}
+
+.back-button {
+  margin-bottom: 1.5rem;
+}
+
+.p-card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.p-card-header {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border-bottom: 1px solid var(--p-surface-border, #475569);
+  padding: 1.5rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.badge-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.section-title {
+  font-weight: 600;
+  color: var(--p-text-color, #e2e8f0);
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.section-content {
+  color: var(--p-text-color-secondary, #cbd5e1);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--p-surface-border, #475569);
+}
+
+.info-grid {
+  margin-top: 1.5rem;
+}
+
+.info-item {
+  margin-bottom: 1rem;
+}
