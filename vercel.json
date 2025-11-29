@@ -1,0 +1,14 @@
+{
+  "buildCommand": "npm install --legacy-peer-deps && npm run build:prod",
+  "outputDirectory": "dist/angular-signals-ticket-dashboard/browser",
+  "devCommand": "npm start",
+  "installCommand": "npm install --legacy-peer-deps",
+  "framework": "angular",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+
